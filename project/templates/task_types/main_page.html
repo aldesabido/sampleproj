@@ -1,0 +1,53 @@
+{% block page_header %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>{{page_name}}</h2>
+
+    </div>
+
+</div>
+{% endblock %}
+
+<div class="row wrapper wrapper-content animated fadeIn" ng-cloak="">
+    <div class="ibox">
+        <div class="ibox-content" ng-class="main.page_loader.main ? 'sk-loading' : ''">
+		
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <label>Add New</label>
+                        <span class="input-group-btn">
+                           <a class="btn btn-default"ng-click="main.create_dialog()"> <span class="glyphicon glyphicon-plus" ></span></a>
+                        </span>
+
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <label>Search</label>
+                    <p class="input-group"  ng-click="$event.stopPropagation()">
+                        <input type="text" class="form-control" name="search" ng-model="main.filters.name"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="main.read_pagination()"><i class="glyphicon glyphicon-search" ></i></button>
+                        </span>
+                    </p>
+                </div>
+            {% include "common/loader.html" %}
+            <!-- Content Here -->
+                 <table class="table" id="table" ng-class="(loading == true) ? 'table_loading' : '' ">
+                    <thead>
+                        <tr class="hdr_border_r">
+                            <th width="10%">Name</th>
+                            <th width="10%">Action</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="record in main.records" class="tr_gray hand_cursor" >
+                            <td>{$ record.name $}</td>
+                            
+                            <td><a class="btn btn-default"ng-click="main.create_dialog(record)"><span class="glyphicon glyphicon-pencil" ></span></a>
+                            	<a class="btn btn-default" ng-click="main.delete(record.id)" ><span class="glyphicon glyphicon-trash"></span></a></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

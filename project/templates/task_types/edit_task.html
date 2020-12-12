@@ -1,0 +1,23 @@
+{% block page_header %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>{{page_name}}</h2>
+    </div>
+</div>
+{% endblock %}
+<div class="row wrapper wrapper-content animated fadeIn" ng-cloak="">
+    <div class="ibox">
+        <div class="ibox-content" ng-class="main.page_loader.main ? 'sk-loading' : ''">
+            {% include "common/loader.html" %}
+            <!-- Content Here -->
+            <div>
+                <input type="text" name="new-name" value="{{task.name}}">
+                <input type="hidden" name="id" value="{{task.id}}">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,27 @@
+<div class="panel panel-success clean noheight">
+    <div class="panel-heading">
+        <h3 class="panel-title">{$ main.current_tab $} - {$ main.records.fullname $}</h3>
+        <a class="btn btn-sm white pull-right margin_top_reverse_20" ng-click="main.close_dialog()"><i class="fa fa-times"></i></a>            
+    </div>
+    <div class="panel-body">
+        <div class="ibox-content dialog" ng-class="main.page_loader.dialog ? 'sk-loading' : ''" ng-style="modal_style">
+            {% include "common/loader.html" %}
+            <form name="form" class="form">
+
+
+                <div class="row">
+                    <label>Name</label>
+                    <input ng-model="main.record.name" name="name" class="form-control" placeholder="Name"></input>
+                    <input type="hidden" name="id" ng-model="main.record.id">
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="">
+            <button class="btn btn-sm btn-success" ng-disabled="form.$invalid" ng-click="main.create()">Save</button>
+
+        </div>
+    </div>
+</div>
